@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<h:head>
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{officeController.loadProducts()}"/>
+		</f:metadata>
+		
+		<meta charset="ISO-8859-1"/>
+		<title>Offices - Manage Offices</title>
+	</h:head>
+	
+	<h:body>
+		<h:outputStylesheet library="css" name="style.css"/>
+		
+		<h:form>
+			<h:messages styleClass="message"/>
+			
+			<h:commandButton value="Add office" action="add_office"/>
+			
+			<h:dataTable value="#{officesController.offices}" var="office"
+				headerClass="tableHeader"
+				rowClasses="tableOddRow,tableEvenRow">
+				<h:column>    				
+					<f:facet name="header">office Code</f:facet>    				
+					<h:outputText value="#{office.manuCode}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">office Name</f:facet>
+					<h:outputText value="#{office.manuName}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">office Details</f:facet>
+					<h:outputText value="#{office.manuDetails}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Action</f:facet>
+					<h:commandLink value="Update" action="#{officesController.setUpdateoffice(office)}"/>
+					<br/>
+					<h:commandLink value="Delete" action="#{officesController.deleteoffice(office)}" onclick="if(confirm('Delete this office?')){return true}return false;"/>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		
+		<h:link value="Home" outcome="index"/>
+	</h:body>
+</html>
