@@ -4,42 +4,23 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class office {
-
-	//private Store store;
-	private Store store;
-	private String Location;
-	// Constructors
-
-	public office() {
-		store = new Store();
+	private int _id;
+	private String location;
+	public int get_id() {
+		return _id;
 	}
-
-	public office(Store store ,String Location) {	
-		super();
-		this.store=store;
+	public void set_id(int _id) {
+		this._id = _id;
 	}
-
-	public Store getStore()
-	{
-		return store;
-	}
-	
-	public void setStore(Store store)
-	{
-		
-		this.store=store;
-	}
-
 	public String getLocation() {
-		return Location;
+		return location;
 	}
-
 	public void setLocation(String location) {
-		Location = location;
+		this.location = location;
+	}
+	@Override
+	public String toString() {
+		return "office [_id=" + _id + ", location=" + location + "]";
 	}
 
 }
-
-
-
-

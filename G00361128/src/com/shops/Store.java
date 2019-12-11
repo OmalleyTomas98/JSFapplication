@@ -1,56 +1,30 @@
 package com.shops;
 
 import javax.faces.bean.ManagedBean;
-
 @ManagedBean
 public class Store {
 
-	private int ID;
-	private String Name;
-	private String Founded;
+int id;
+String name;
+String founded;
 
-	// Constructors
-	public Store() {
-	}
+public int getId() {
+return id;
+}
+public void setId(int id) {
+this.id = id;
+}
+public String getName() {
+return name;
+}
+public void setName(String name) {
+this.name = name;
+}
+public String getFounded() {
+return founded;
+}
+public void setFounded(String founded) {
+this.founded = founded;
+}
 
-	public Store(int ID, String Name, String Founded) {
-		super();
-
-		this.ID = ID;
-		this.Name = Name;
-		this.Founded = Founded;
-	}
-
-	// Getters and Setters
-	public int getID() {
-		return ID;
-	}
-
-	public void setID(int iD) {
-		this.ID = ID;
-	}
-
-	public String getName() {
-
-		return Name;
-
-	}
-
-	public void setName(String Name) {
-
-		this.Name = Name;
-
-	}
-
-	public String getFounded() {
-
-		return Founded;
-
-	}
-
-	public void setFounded(String founded) {
-
-		Founded = founded;
-
-	}
 }

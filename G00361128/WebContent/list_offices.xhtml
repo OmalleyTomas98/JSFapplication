@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
-	
-	<h:head>
-		<f:metadata>
-			<f:event type="preRenderView" listener="#{officeController.loadProducts()}"/>
-		</f:metadata>
-		
-		<meta charset="ISO-8859-1"/>
-		<title>Offices - Manage Offices</title>
-	</h:head>
-	
-	<h:body>
-		<h:outputStylesheet library="css" name="style.css"/>
-		
-		<h:form>
-			<h:messages styleClass="message"/>
-			
-			<h:commandButton value="Add office" action="add_office"/>
-			
-			<h:dataTable value="#{officesController.offices}" var="office"
-				headerClass="tableHeader"
-				rowClasses="tableOddRow,tableEvenRow">
-				<h:column>    				
-					<f:facet name="header">office Code</f:facet>    				
-					<h:outputText value="#{office.manuCode}"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">office Name</f:facet>
-					<h:outputText value="#{office.manuName}"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">office Details</f:facet>
-					<h:outputText value="#{office.manuDetails}"/>
-				</h:column>
-				<h:column>
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+ 
+  <h:head>
+    <title>Product List</title>
+  </h:head>
+ 
+<f:metadata>
+<f:event type="preRenderView" listener="#{productController.loadProducts()}"/>
+</f:metadata>
+
+<h:outputStylesheet library="css" name="tables.css"></h:outputStylesheet>
+ 
+ 
+  <h:body>
+  <h:form>
+  <h:dataTable value="#{productController.products}" var="p"
+  headerClass="table-header"
+  rowClasses="table-odd-row, table-even-row">
+ 
+  <h:column>
+  <f:facet name="header">ProductID</f:facet>
+  #{p.PID}
+  </h:column>
+ 
+  <h:column>
+  <f:facet name="header">StoreID</f:facet>
+  #{p.SID}
+  </h:column>
+ 
+  <h:column>
+  <f:facet name="header">Price</f:facet>
+  #{p.price}
+  </h:column>
+ 
+  <h:column>
+  <f:facet name="header">Product Name</f:facet>
+  #{p.prodName}
+  </h:column>
+    <h:column>
 					<f:facet name="header">Action</f:facet>
-					<h:commandLink value="Update" action="#{officesController.setUpdateoffice(office)}"/>
-					<br/>
-					<h:commandLink value="Delete" action="#{officesController.deleteoffice(office)}" onclick="if(confirm('Delete this office?')){return true}return false;"/>
+					<h:commandLink value="Delete" action="#{productController.deleteProduct(p)}" onclick="if(confirm('Delete this Product?')){return true}return false;"/>
 				</h:column>
-			</h:dataTable>
-		</h:form>
-		
-		<h:link value="Home" outcome="index"/>
-	</h:body>
+     
+ 
+      </h:dataTable>
+     
+       <h:commandLink value="Home" action="index.xhtml"></h:commandLink>
+       </h:form>
+  </h:body>
 </html>
